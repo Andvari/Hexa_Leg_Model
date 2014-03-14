@@ -10,7 +10,7 @@
 
 float rad(float);
 float grad(float);
-
+/*
 int main(){
 	float x;
 	float y;
@@ -32,8 +32,8 @@ int main(){
 	float fi;
 	float epsilon;
 
-	x = 5;
-	y = 0;
+	x = 6.9;
+	y = 1;
 	z = 0;
 
 	a = 0;
@@ -72,7 +72,7 @@ int main(){
 
 	return 0;
 }
-
+*/
 
 float rad(float a){
 	return (2.*M_PI*a/360.);
@@ -82,3 +82,42 @@ float grad(float a){
 	return (360.*a/(2.*M_PI));
 }
 
+int main(){
+
+	float a;
+	float b;
+	float c;
+	float d;
+	float e;
+
+	float alpha;
+	float beta;
+	float gamma;
+	float delta;
+
+	float mu;
+
+	a = sqrt(2.);
+    b = sqrt(2.);
+
+    alpha = 45.;
+    beta = 0.;
+
+    d = 1.;
+    delta = -45.;
+
+	e = sqrt(a*a + (a+b)*(a+b) - 2.*a*(a+b)*cos(rad(beta)));
+	printf("e: %f\n", e);
+
+	mu = grad(asin(a*sin(beta)/e));
+	printf("mu: %f\n", mu);
+
+	printf("delta-alpha-beta-mu: %f\n", delta-alpha-beta-mu);
+
+	c = sqrt(d*d + e*e - 2.*d*e*sin(rad(delta-alpha-beta-mu)));
+
+	gamma = beta + mu + grad(asin((d*cos(rad(delta-alpha-beta-mu)))/(c)));
+
+
+	printf("c: %f, gamma: %f\n", c, gamma);
+}
